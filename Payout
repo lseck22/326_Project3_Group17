@@ -1,0 +1,32 @@
+hourly_wage = 20.0
+
+
+class Payout:
+  @staticmethod
+  def calculate_weekly_pay(hours_worked):
+      return hours_worked * hourly_wage
+
+  @staticmethod
+  def pay_report(caregivers, days_per_week=7):
+      reported_hours_worked = []
+      total_hours = sum(caregiver.hours for caregiver in caregivers)
+
+      # Calculate weekly hours by assuming 4 weeks in a month
+      weekly_hours = total_hours / (30 / days_per_week)  # Approximating 4.3 weeks in a month
+
+      # Calculate weekly pay and total pay
+      weekly_total = weekly_hours * hourly_wage
+      monthly_total = total_hours * hourly_wage
+
+      # Calculates the weekly and monthly pair by caregiver and the number of hours reported
+      # Then prints a script to list it in String
+      for caregiver in caregivers:
+          weekly_pay = Payout.calculate_weekly_pay(caregiver.hours / (30 / days_per_week))
+          monthly_pay = Payout.calculate_weekly_pay(caregiver.hours)
+          reported_hours_worked.append(
+              f"{caregiver.name}: {caregiver.hours} hours worked this month, "
+              f"${monthly_pay: .2f} gross pay (Approx. Weekly Pay: ${weekly_pay:.2f})"
+          )
+
+      return reported_hours_worked, weekly_total, monthly_total
+

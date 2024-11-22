@@ -1,0 +1,19 @@
+# Creating the schedule for November 2024
+schedule = Schedule(2024, 11, [caregiver1, caregiver2, caregiver3, caregiver4, caregiver5, caregiver6, caregiver7, caregiver8])
+schedule.make_shifts()
+
+
+# Displaying the schedule as HTML
+html_schedule = schedule.display_schedule_as_html()
+
+#make html file for the schedule 
+with open("schedule.html", "w") as file:
+    file.write(html_schedule)
+
+
+# Generating and displaying the pay report
+reported_hours, weekly_total, monthly_total = Payout.pay_report([caregiver1, caregiver2, caregiver3, caregiver4, caregiver5, caregiver6, caregiver7, caregiver8])
+for report in reported_hours:
+    print(report)
+print(f"Weekly Total: ${weekly_total: .2f}")
+print(f"Monthly Total: ${monthly_total: .2f}")

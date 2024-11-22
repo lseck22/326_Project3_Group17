@@ -1,0 +1,24 @@
+import calendar  # Allows for the calendar module to be accessed
+from datetime import datetime  # Allows us to work with the date and time if needed
+from collections import defaultdict  # Allows for default values
+
+# Created caregivers own class
+class Caregivers:
+    # Declared the attributes
+    def __init__(self, name, phone, email, pay_rate, hours=0):
+        self.name = name
+        self.phone = phone
+        self.email = email
+        self.pay_rate = pay_rate
+        self.hours = hours
+        # Sets the default availability to available as given in directions
+        self.availability = defaultdict(lambda: 'available')
+
+    # Function to get the caregiver's availability depending on the day and shift
+    def get_availability(self, day, shift):
+        return self.availability[(shift, day)]
+
+    # Function to set the availability
+    def set_availability(self, day, shift, status):
+        self.availability[(shift, day)] = status
+        print(f"Set availability for {self.name} on day {day}, shift {shift} to {status}")

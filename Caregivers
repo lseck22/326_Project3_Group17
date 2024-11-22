@@ -12,7 +12,7 @@ class Caregivers:
         self.pay_rate = pay_rate
         self.hours = hours
         # Sets the default availability to available as given in directions
-        self.availability = defaultdict(lambda: 'available')
+        self.availability = defaultdict(lambda: 'available') #*Geeks For Geeks- got this from 'https://www.geeksforgeeks.org/defaultdict-in-python/' because I wanted to figure our how to set the default availability 
 
     # Function to get the caregiver's availability depending on the day and shift
     def get_availability(self, day, shift):

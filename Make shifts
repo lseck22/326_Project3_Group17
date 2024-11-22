@@ -1,0 +1,30 @@
+#function to add the shifts, implemented in the schedule class
+def make_shifts(self):
+        days = calendar.monthrange(self.year, self.month)[1]
+
+        # initialize a caregiver queue for better rotation
+        caregivers_queue = self.caregivers[:]
+
+        for current_day in range(1, days + 1):
+            for shift in ["AM", "PM"]:
+                assigned = False
+
+                #runs through the list of caregivers
+                for caregiver in self.caregivers:
+                    #if the availability of the caregiver is preffered, the hours are added and the name of the caregiver is added to the schedule
+                    if caregiver.get_availability(current_day, shift) == 'preferred':
+                        caregiver.hours += 6
+                        self.schedule[current_day][shift] = caregiver.name
+                        assigned = True
+                        break
+
+                # assign available caregivers in rotation if no preference
+                if not assigned:
+                    #runs through the list of caregivers
+                    for caregiver in caregivers_queue:
+                        #if the availability of the caregiver is available, then the hours are added the name of the caregiver is added to the schedule
+                        if caregiver.get_availability(current_day, shift) == 'available':
+                            caregiver.hours += 6
+                            self.schedule[current_day][shift] = caregiver.name
+                            caregivers_queue.append(caregivers_queue.pop(0))  # Rotate queue
+                            break

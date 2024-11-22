@@ -1,0 +1,77 @@
+def display_schedule_as_html(self):
+        # Create the HTML structure
+        html_schedule = """
+        <html>
+        <head>
+            <title>Caregiver Schedule</title>
+            <style>
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                    margin: 20px 0;
+                }
+                th, td {
+                    border: 1px solid black;
+                    padding: 10px;
+                    text-align: center;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+                td {
+                    height: 100px;
+                    vertical-align: top;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Caregiver Schedule</h1>
+            <table>
+                <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+        """
+
+        # Get the first day of the month
+        first_day = datetime(self.year, self.month, 1).weekday()
+        days_in_month = calendar.monthrange(self.year, self.month)[1]
+
+        # Add the initial empty cells for the first week
+        html_schedule += "<tr>" + "<td></td>" * first_day
+
+        # Add the actual days of the month
+        day_counter = 1
+        for _ in range(first_day, 7):
+            if day_counter <= days_in_month:
+                html_schedule += f"<td>{day_counter}<br>AM: {self.schedule[day_counter]['AM']}<br>PM: {self.schedule[day_counter]['PM']}</td>"
+                day_counter += 1
+            else:
+                html_schedule += "<td></td>"
+
+        html_schedule += "</tr>"
+
+        # Fill in the rest of the weeks
+        while day_counter <= days_in_month:
+            html_schedule += "<tr>"
+            for _ in range(7):
+                if day_counter <= days_in_month:
+                    html_schedule += f"<td>{day_counter}<br>AM: {self.schedule[day_counter]['AM']}<br>PM: {self.schedule[day_counter]['PM']}</td>"
+                    day_counter += 1
+                else:
+                    html_schedule += "<td></td>"
+            html_schedule += "</tr>"
+
+        # Close the table and HTML tags
+        html_schedule += """
+            </table>
+        </body>
+        </html>
+        """
+
+        return html_schedule

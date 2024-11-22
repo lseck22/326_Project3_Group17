@@ -1,0 +1,29 @@
+# created instances of the caregivers
+caregiver1 = Caregivers("Leanna", "525-354-1234", "leanna@gmail.com", 20.0)
+caregiver2 = Caregivers("Sesen", "123-444-5678", "sesen@gmail.com", 20.0)
+caregiver3 = Caregivers("Sebastian", "555-333-7777", "sebastian@gmail.com", 20.0)
+caregiver4 = Caregivers("Ivy", "444-444-4444", "ivy@gmail.com", 20.0)
+caregiver5 = Caregivers("Iris", "555-555-5555", "iris@gmail.com", 20.0)
+caregiver6 = Caregivers("Veronica", "555-535-5555", "Veronica@gmail.com", 20.0)
+caregiver7 = Caregivers("Lana", "555-325-5555", "Lana@gmail.com", 20.0)
+caregiver8 = Caregivers("Ruby", "455-325-5555", "Ruby@gmail.com", 20.0)
+
+
+
+# setting the availability for the caregivers
+caregiver1.set_availability(1, "AM", "unavailable")
+caregiver1.set_availability(1, "PM", "unavaliable")
+caregiver2.set_availability(2, "AM", "avaiable")
+caregiver2.set_availability(2, "PM", "preferred")
+caregiver3.set_availability(3, "AM", "preferred")
+caregiver3.set_availability(3, "PM", "preferred")
+caregiver4.set_availability(4, "AM", "preferred")
+caregiver4.set_availability(4, "PM", "preferred")
+caregiver5.set_availability(5, "AM", "unavaliable")
+caregiver5.set_availability(5, "PM", "preferred")
+caregiver6.set_availability(6, "AM", "unavaliable")
+caregiver6.set_availability(6, "PM", "preferred")
+caregiver7.set_availability(7, "AM", "unavaliable")
+caregiver7.set_availability(7, "PM", "preferred")
+caregiver8.set_availability(8, "AM", "avaliable")
+caregiver8.set_availability(8, "PM", "avaliable")
